@@ -1,0 +1,89 @@
+CREATE SCHEMA Usr
+CREATE TABLE Usr.FinancialYear
+(
+	FinancialYearId int identity(1,1) primary key,
+	FinancialYearName	nvarchar(200) not null,
+	IsActive		bit default 1,
+	CreatedBy		int null,
+	CreatedDate		datetime null,
+	UpdatedBy		int null,
+	UpdatedDate		datetime null
+)
+GO
+CREATE TABLE Usr.Agging
+(
+	AggingId int identity(1,1) primary key,
+	AggingDays	int not null,
+	IsActive		bit default 1,
+	CreatedBy		int null,
+	CreatedDate		datetime null,
+	UpdatedBy		int null,
+	UpdatedDate		datetime null
+)
+CREATE TABLE Usr.Devision
+(
+	DevisionId	int identity(1,1) primary key,
+	DevisionName	nvarchar(200) not null,
+	IsActive		bit default 1,
+	CreatedBy		int null,
+	CreatedDate		datetime null,
+	UpdatedBy		int null,
+	UpdatedDate		datetime null
+)
+GO
+CREATE TABLE Usr.Departmet
+(
+	DepartmetId	int identity(1,1) primary key,
+	DepartmetName	nvarchar(200) not null,
+	IsActive		bit default 1,
+	CreatedBy		int null,
+	CreatedDate		datetime null,
+	UpdatedBy		int null,
+	UpdatedDate		datetime null
+)
+GO
+CREATE TABLE Usr.Roles
+(
+	RolesId	int identity(1,1) primary key,
+	RolesName	nvarchar(200) not null,
+	IsActive		bit default 1,
+	CreatedBy		int null,
+	CreatedDate		datetime null,
+	UpdatedBy		int null,
+	UpdatedDate		datetime null
+)
+
+
+CREATE TABLE Usr.FileUpload
+(
+	FileUploadId 		int identity(1,1) primary key,
+	Name			nvarchar(500) not null,
+	IsActive		bit default 1,
+	CreatedBy		int null,
+	CreatedDate		datetime null,
+	UpdatedBy		int null,
+	UpdatedDate		datetime null
+)
+GO
+
+Scaffold-DbContext "Server=DESKTOP-FSJDQTU\SQLEXPRESS;Database=ExcelApp;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir DataModels
+
+/*
+
+Scaffold-DbContext "Server=DESKTOP-FSJDQTU\SQLEXPRESS;Database=ExcelApp;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -t FinancialYear -t Agging -t Departmet -t Devision -t FileUpload -t FinancialYear -t Roles -f
+
+
+Scaffold-DbContext "Server=DESKTOP-FSJDQTU\SQLEXPRESS;Database=ExcelApp;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir DataNodels -Force
+
+dotnet ef dbcontext scaffold "Server=DESKTOP-FSJDQTU\SQLEXPRESS;Database=ExcelApp;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -o Models -f
+
+
+
+
+Scaffold-DbContext "Server=DESKTOP-FSJDQTU\SQLEXPRESS;Database=ExcelApp;Trusted_Connection=True; MultipleActiveResultSets=true;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -UseDatabaseNames -Force -Context "ExcelAppContext" -Schema "Usr","Agging","FinancialYear","Departmet","Devision","FileUpload","Roles"
+
+
+
+Scaffold-DbContext "Server=DESKTOP-FSJDQTU\SQLEXPRESS;Database=ExcelApp;Trusted_Connection=True; MultipleActiveResultSets=true;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models  -t Usr.FinancialYear -t Usr.Agging Usr.Departmet Usr.Devision Usr.FileUpload Usr.FinancialYear Usr.Roles -f
+
+*/
